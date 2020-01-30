@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="zh-EN">
+<html lang="zh-CN">
 
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Tags, 我的空间">
-    <meta name="description" content="Tags | 我的空间">
+    <meta name="keywords" content="标签, 我的空间">
+    <meta name="description" content="标签 | 我的空间">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Tags | 我的空间</title>
+    <title>标签 | 我的空间</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -107,7 +107,7 @@
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
       
-      <span>联系</span>
+      <span>留言</span>
     </a>
     
   </li>
@@ -118,14 +118,14 @@
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
       
-      <span>朋友</span>
+      <span>友情链接</span>
     </a>
     
   </li>
   
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
     </a>
   </li>
 </ul>
@@ -209,7 +209,7 @@
 			
 			    <i class="fa-fw fas fa-comments"></i>
 			
-			联系
+			留言
 		</a>
           
         </li>
@@ -220,7 +220,7 @@
 			
 			    <i class="fa-fw fas fa-address-book"></i>
 			
-			朋友
+			友情链接
 		</a>
           
         </li>
@@ -348,15 +348,33 @@
     <div class="card">
         <div class="card-content">
             <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;Post Tags
+                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
             </div>
             <div class="tag-chips">
+                
+                
+                <a href="/tags/%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/" title="常用语法: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="常用语法" style="background-color: #F9EBEA;">常用语法
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Markdown/" title="Markdown: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Markdown" style="background-color: #F5EEF8;">Markdown
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
                 
                 
                 <a href="/tags/springboot/" title="springboot: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="springboot" style="background-color: #F9EBEA;">springboot
+                            data-tagname="springboot" style="background-color: #D5F5E3;">springboot
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -385,7 +403,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"springboot","weight":1,"link":"https://gitqyn.github.io/tags/springboot/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"常用语法","weight":1,"link":"https://gitqyn.github.io/tags/常用语法/"},{"text":"Markdown","weight":1,"link":"https://gitqyn.github.io/tags/Markdown/"},{"text":"springboot","weight":1,"link":"https://gitqyn.github.io/tags/springboot/"}], {
         autoResize: true
     });
 </script>
@@ -467,8 +485,8 @@
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
                    class="search-input">
         </div>
         <div id="searchResult"></div>
