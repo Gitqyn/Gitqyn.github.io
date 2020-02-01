@@ -52,7 +52,7 @@
       
       <i class="fas fa-home" style="zoom: 0.6;"></i>
       
-      <span>主页</span>
+      <span>首页</span>
     </a>
     
   </li>
@@ -107,7 +107,7 @@
       
       <i class="fas fa-comments" style="zoom: 0.6;"></i>
       
-      <span>留言</span>
+      <span>留言板</span>
     </a>
     
   </li>
@@ -154,7 +154,7 @@
 			
 			    <i class="fa-fw fas fa-home"></i>
 			
-			主页
+			首页
 		</a>
           
         </li>
@@ -209,7 +209,7 @@
 			
 			    <i class="fa-fw fas fa-comments"></i>
 			
-			留言
+			留言板
 		</a>
           
         </li>
@@ -300,6 +300,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -516,6 +529,32 @@
         </div>
     </div>
 
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '60bdb656eb9398b4abd8',
+        clientSecret: 'e9b535d0d9c1479cbcb1e416181e008f3cc7d15b',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2020-01-29T15-17-42',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
     
 
     
