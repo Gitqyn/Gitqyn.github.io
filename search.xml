@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>搭建hexo网站</title>
+      <link href="/2020/02/07/%E6%90%AD%E5%BB%BAhexo%E7%BD%91%E7%AB%99/"/>
+      <url>/2020/02/07/%E6%90%AD%E5%BB%BAhexo%E7%BD%91%E7%AB%99/</url>
+      
+        <content type="html"><![CDATA[<h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><p>目前静态博客站点非常流行，所以我其实不太建议大家再去搞动态博客系统，那样要操心的事情太多了。使用搭建静态博客，可以让我们把大部分精力集中在博客写作上，而不是无休止的耗费在博客搭建上（很多小伙伴搭建博客的时候兴致勃勃，搭建完成后就意兴阑珊，然后就没有然后了，空留一个博客网站摆在那里）。</p><p>静态博客选型主要是两种方案：</p><p>GitHub 上 结合 Jekyll 搭建的博客，Jekyll 是一个简单的博客形态的静态站点生产机器。它有一个模版目录，其中包含原始文本格式的文档，通过一个转换器（如 Markdown）和我们的 Liquid 渲染器转化成一个完整的可发布的静态网站，你可以发布在任何你喜爱的服务器上。Jekyll 也可以运行在 GitHub Page 上，也就是说，你可以使用 GitHub 的服务来搭建你的项目页面、博客或者网站，而且是完全免费的。<br>本地渲染好 HTML 后，上传到服务端，代表作品就是 hexo。<br>简单说，第一种方式，就是我们在本地写好 markdown 之后，直接上传到服务端，服务端会自动渲染成 HTML，然后展示给用户，第二种方案则是我们在本地写好 markdown 之后，在本地将 markdown 渲染成 HTML，然后将渲染好的 HTML 上传到服务端。（markdown 小伙伴们应该都了解吧，我就不做过多介绍了）</p><p>这个博客的所有资金投入就是几十块钱买了一个域名，再就没花钱了。站点托管在 GitHub 上，评论系统也用了 GitHub 来做，接下来我们就来看看这个东西怎么实现，如果你能接受 GitHub 提供的默认域名，那你甚至连域名都不用买了。</p><p>实际上搭建一个个人站点并不费什么事，唯一的资金投入就是域名，一年也就几十块钱，其他的套用现成的技术即可，接下来我就来和大伙分享下独立博客搭建过程，给小伙伴一个参考。</p><h1 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h1><p>用 Hexo 搭建，要是有一点点前端 Node 的使用经验更佳，没有当然也没关系，因为与之相关的命令并不多。使用 Hexo 需要提前在电脑上安装好 Node 和 Git ，安装成功后，就可以开始 Hexo 的安装了。步骤如下：</p><h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>npm install -g hexo-cli</p><h2 id="在本地创建一个博客目录"><a href="#在本地创建一个博客目录" class="headerlink" title="在本地创建一个博客目录"></a>在本地创建一个博客目录</h2><p>hexo init blog</p><p>上面这个命令执行完后，会在本地创建一个 blog 目录，这里边就是独立博客所必须的一些文件，然后进入到这个目录中，执行 npm install 命令，安装相关的依赖。</p><p>安装完成后，会生成如下目录：</p><p>.<br>├── _config.yml<br>├── package.json<br>├── scaffolds<br>├── source<br>|   ├── _drafts<br>|   └── _posts<br>└── themes<br>这里几个文件/文件夹，我们先来关注其中两个 _config.yml 和 themes 目录， _config.yml 文件中，我们可以做网站的一些基本配置，例如 网站的 title，描述，关键字、图标等，这些配置大都见名知意。如下：</p><p>配置完成后，定位到 blog 目录，执行 hexo s 就可以在本地启动项目了，启动成功后，浏览器中输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 就可以看到网站了。</p><p>说到 hexo s 命令，这里有几个常用命令需要给大家介绍下，分别是：</p><p>hexo s 本地启动<br>hexo g 生成静态文件<br>hexo d 部署<br>hexo clean |清理缓存</p><p>修改主题</p><p>以 hexo-theme-next 主题为例， clone 命令如下：</p><p>cd your-hexo-site<br>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> themes/next<br>克隆成功后，修改 hexo 的 _config.yml 文件，将主题修改为 next，如下：</p><h1 id="Extensions"><a href="#Extensions" class="headerlink" title="Extensions"></a>Extensions</h1><h2 id="Plugins-https-hexo-io-plugins"><a href="#Plugins-https-hexo-io-plugins" class="headerlink" title="Plugins: https://hexo.io/plugins/"></a>Plugins: <a href="https://hexo.io/plugins/" target="_blank" rel="noopener">https://hexo.io/plugins/</a></h2><h2 id="Themes-https-hexo-io-themes"><a href="#Themes-https-hexo-io-themes" class="headerlink" title="Themes: https://hexo.io/themes/"></a>Themes: <a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></h2><p>theme: next<br>主题创建好之后，接下来就是对主题的配置了，这个比较容易，直接参考官方文档即可。配置完成后，执行如下命令，即可看到新的主题效果：</p><p>hexo clean<br>hexo g<br>hexo s</p><p>绑定到 GitHub<br>大家可能已经迫不及待想要把博客上传到 GitHub 了，绑定到 Github 步骤也很简单，首先以 自己的GitHub ID.github.io 为名创建一个 public 仓库，例如我的 ID 为 lenve，创建的仓库如下：</p><p>创建成功之后，修改 hexo 的 _config.yml 文件，配置 GitHub 地址，如下：<br>deploy:<br>  type: git<br>  repo: <a href="mailto:git@github.com">git@github.com</a>:Gitqyn/Gitqyn.github.io.git<br>  branch: master<br>这里根据自己的地址来配置即可，配置完成后，执行如下命令：</p><p>hexo g<br>hexo d<br>执行完成后，就可以将数据上传到 GitHub 了（当然这里需要大家提前配置一下 GitHub 的公钥）。</p><p>1.生成SSH指纹</p><p>生成SSH指纹的命令很简单，如下：</p><p>ssh-keygen -t rsa -b 4096 -C “你的邮箱地址”<br>注意邮箱地址要替换。</p><p>2.添加ssh到ssh-agent中</p><p>执行如下命令即可：</p><p>eval “$(ssh-agent -s)”<br>OK，做好这一切之后，我们当前用户目录下已经有了一个名为.ssh的隐藏文件夹了，打开这个目录，会发现有一个名为id_rsa.pub的文件，这就是我们一会要使用的公钥文件。</p><p>3.将公钥告诉GitHub</p><p>登录GitHub，点击右上角的向下的箭头，选择Settings，在新打开的页面中左边侧栏选择SSH and GPG keys</p><p>上传成功后，访问 <a href="https://Gitqyn.github.io">https://Gitqyn.github.io</a> 就可以看到自己的个人站点了，这是 GitHub 默认给我们提供的域名。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>markdown的常用语法</title>
       <link href="/2020/01/30/markdown/"/>
       <url>/2020/01/30/markdown/</url>
