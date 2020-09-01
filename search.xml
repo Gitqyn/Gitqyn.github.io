@@ -4,17 +4,17 @@
   
     
     <entry>
-      <title>我的其他项目</title>
-      <link href="/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/"/>
-      <url>/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/</url>
+      <title>题库</title>
+      <link href="/2020/02/11/%E9%A2%98%E5%BA%93/"/>
+      <url>/2020/02/11/%E9%A2%98%E5%BA%93/</url>
       
-        <content type="html"><![CDATA[<center><font face="黑体" size="10">my projects</font></center><h1 id="一、vhr-springboot-vue"><a href="#一、vhr-springboot-vue" class="headerlink" title="一、vhr_springboot_vue"></a>一、vhr_springboot_vue</h1><p>项目名称：VHR<br>项目简介：springboot+vue 前后端分离的人力资源管理系统<br>项目地址：<a href="https://github.com/Gitqyn/vhr_springboot_vue" target="_blank" rel="noopener">https://github.com/Gitqyn/vhr_springboot_vue</a></p><h5 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h5><p><img src="/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/login.jpg" alt="登录页面"></p><h1 id="to-be-continue……"><a href="#to-be-continue……" class="headerlink" title="to be continue……"></a>to be continue……</h1>]]></content>
+        <content type="html"><![CDATA[<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="1、-基本数据类型"><a href="#1、-基本数据类型" class="headerlink" title="1、 基本数据类型"></a>1、 基本数据类型</h2><p><img src="/2020/02/11/%E9%A2%98%E5%BA%93/20190714224935794.jpg" alt></p><h2 id="2-String能被继承吗？为什么？"><a href="#2-String能被继承吗？为什么？" class="headerlink" title="2.String能被继承吗？为什么？"></a>2.String能被继承吗？为什么？</h2><p>不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。平常我们定义的String str=”a”;其实和String str=new String(“a”)还是有差异的。<br>前者默认调用的是String.valueOf来返回String实例对象，至于调用哪个则取决于你的赋值，比如String num=1,调用的是</p><pre><code>public static String valueOf(int i) {    return Integer.toString(i);}</code></pre><p>后者则是调用如下部分：</p><pre><code>public String(String original) {    this.value = original.value;    this.hash = original.hash;}</code></pre><p>最后我们的变量都存储在一个char数组中</p><pre><code>private final char value[];</code></pre><h2 id="3-String，-Stringbuffer，-StringBuilder-的区别。"><a href="#3-String，-Stringbuffer，-StringBuilder-的区别。" class="headerlink" title="3.String， Stringbuffer， StringBuilder 的区别。"></a>3.String， Stringbuffer， StringBuilder 的区别。</h2><p>String 字符串常量(final修饰，不可被继承)，String是常量，当创建之后即不能更改。(可以通过StringBuffer和StringBuilder创建String对象(常用的两个字符串操作类)。)<br>==StringBuffer 字符串变量（线程安全）,==其也是final类别的，不允许被继承，其中的绝大多数方法都进行了同步处理，包括常用的Append方法也做了同步处理(synchronized修饰)。其自jdk1.0起就已经出现。其toString方法会进行对象缓存，以减少元素复制开销。</p><pre><code>public synchronized String toString() {    if (toStringCache == null) {        toStringCache = Arrays.copyOfRange(value, 0, count);    }    return new String(toStringCache, true);}</code></pre><p>==StringBuilder 字符串变量（非线程安全）==其自jdk1.5起开始出现。与StringBuffer一样都继承和实现了同样的接口和类，方法除了没使用synch修饰以外基本一致，不同之处在于最后toString的时候，会直接返回一个新对象。</p><pre><code>public String toString() {    // Create a copy, don’t share the array    return new String(value, 0, count);}</code></pre><h2 id="4-ArrayList-和-LinkedList-有什么区别。"><a href="#4-ArrayList-和-LinkedList-有什么区别。" class="headerlink" title="4.ArrayList 和 LinkedList 有什么区别。"></a>4.ArrayList 和 LinkedList 有什么区别。</h2><p>ArrayList和LinkedList都实现了List接口，有以下的不同点：<br>1、ArrayList是基于索引的数据接口，它的底层是数组。它可以以O(1)时间复杂度对元素进行随机访问。与此对应，LinkedList是以元素列表的形式存储它的数据，每一个元素都和它的前一个和后一个元素链接在一起，在这种情况下，查找某个元素的时间复杂度是O(n)。<br>2、相对于ArrayList，LinkedList的插入，添加，删除操作速度更快，因为当元素被添加到集合任意位置的时候，不需要像数组那样重新计算大小或者是更新索引。<br>3、LinkedList比ArrayList更占内存，因为LinkedList为每一个节点存储了两个引用，一个指向前一个元素，一个指向下一个元素。</p><h2 id="5-讲讲类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，当-new-的时候，-他们的执行顺序。"><a href="#5-讲讲类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，当-new-的时候，-他们的执行顺序。" class="headerlink" title="5.讲讲类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，当 new 的时候， 他们的执行顺序。"></a>5.讲讲类的实例化顺序，比如父类静态数据，构造函数，字段，子类静态数据，构造函数，字段，当 new 的时候， 他们的执行顺序。</h2><p>此题考察的是类加载器实例化时进行的操作步骤（加载–&gt;连接-&gt;初始化）。<br>父类静态代变量、<br>父类静态代码块、<br>子类静态变量、<br>子类静态代码块、<br>父类非静态变量（父类实例成员变量）、<br>父类构造函数、<br>子类非静态变量（子类实例成员变量）、<br>子类构造函数。<br>测试demo<br>参阅博客《深入理解类加载》</p><h2 id="6-用过哪些-Map-类，都有什么区别，HashMap-是线程安全的吗-并发下使用的-Map-是什么，他们内部原理分别是什么，比如存储方式，-hashcode，扩容，-默认容量等。"><a href="#6-用过哪些-Map-类，都有什么区别，HashMap-是线程安全的吗-并发下使用的-Map-是什么，他们内部原理分别是什么，比如存储方式，-hashcode，扩容，-默认容量等。" class="headerlink" title="6.用过哪些 Map 类，都有什么区别，HashMap 是线程安全的吗,并发下使用的 Map 是什么，他们内部原理分别是什么，比如存储方式， hashcode，扩容， 默认容量等。"></a>6.用过哪些 Map 类，都有什么区别，HashMap 是线程安全的吗,并发下使用的 Map 是什么，他们内部原理分别是什么，比如存储方式， hashcode，扩容， 默认容量等。</h2><p>hashMap是线程不安全的，HashMap是数组+链表+红黑树（JDK1.8增加了红黑树部分）实现的，采用哈希表来存储的，<br>参考链接<br>JAVA8 的 ConcurrentHashMap 为什么放弃了分段锁，有什么问题吗，如果你来设计，你如何设计。<br>参考链接</p><h2 id="7-有没有有顺序的-Map-实现类，-如果有，-他们是怎么保证有序的。"><a href="#7-有没有有顺序的-Map-实现类，-如果有，-他们是怎么保证有序的。" class="headerlink" title="7.有没有有顺序的 Map 实现类， 如果有， 他们是怎么保证有序的。"></a>7.有没有有顺序的 Map 实现类， 如果有， 他们是怎么保证有序的。</h2><p>TreeMap和LinkedHashMap是有序的（TreeMap默认升序，LinkedHashMap则记录了插入顺序）。<br>参考链接</p><h2 id="8-抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么。"><a href="#8-抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么-类可以实现多个接口么。" class="headerlink" title="8.抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么。"></a>8.抽象类和接口的区别，类可以继承多个类么，接口可以继承多个接口么,类可以实现多个接口么。</h2><p>1、抽象类和接口都不能直接实例化，如果要实例化，抽象类变量必须指向实现所有抽象方法的子类对象，接口变量必须指向实现所有接口方法的类对象。<br>2、抽象类要被子类继承，接口要被类实现。<br>3、接口只能做方法申明，抽象类中可以做方法申明，也可以做方法实现<br>4、接口里定义的变量只能是公共的静态的常量，抽象类中的变量是普通变量。<br>5、抽象类里的抽象方法必须全部被子类所实现，如果子类不能全部实现父类抽象方法，那么该子类只能是抽象类。同样，一个实现接口的时候，如不能全部实现接口方法，那么该类也只能为抽象类。<br>6、抽象方法只能申明，不能实现。abstract void abc();不能写成abstract void abc(){}。<br>7、抽象类里可以没有抽象方法<br>8、如果一个类里有抽象方法，那么这个类只能是抽象类<br>9、抽象方法要被实现，所以不能是静态的，也不能是私有的。<br>10、接口可继承接口，并可多继承接口，但类只能单根继承。··</p><h2 id="9-继承和聚合的区别在哪。"><a href="#9-继承和聚合的区别在哪。" class="headerlink" title="9.继承和聚合的区别在哪。"></a>9.继承和聚合的区别在哪。</h2><p>继承指的是一个类（称为子类、子接口）继承另外的一个类（称为父类、父接口）的功能，并可以增加它自己的新功能的能力，继承是类与类或者接口与接口之间最常见的关系；在Java中此类关系通过关键字extends明确标识，在设计时一般没有争议性；</p>]]></content>
       
       
       
         <tags>
             
-            <tag> projects </tag>
+            <tag> 题 </tag>
             
         </tags>
       
@@ -23,26 +23,19 @@
     
     
     <entry>
-      <title>Other_Projects</title>
-      <link href="/2020/02/10/Other-Projects/"/>
-      <url>/2020/02/10/Other-Projects/</url>
+      <title>我的其他项目</title>
+      <link href="/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/</url>
       
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>projects</title>
-      <link href="/2020/02/10/projects/"/>
-      <url>/2020/02/10/projects/</url>
-      
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<center><font face="黑体" size="10">my projects</font></center><h1 id="一、vhr-springboot-vue"><a href="#一、vhr-springboot-vue" class="headerlink" title="一、vhr_springboot_vue"></a>一、vhr_springboot_vue</h1><p>项目名称：VHR<br>项目简介：springboot+vue 前后端分离的人力资源管理系统<br>项目地址：<a href="https://github.com/Gitqyn/vhr_springboot_vue" target="_blank" rel="noopener">https://github.com/Gitqyn/vhr_springboot_vue</a></p><h5 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h5><p><img src="/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/login.jpg" alt="登录页面"></p><p><img src="/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/baseList.jpg" alt="基本资料"></p><p><img src="/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/salary.jpg" alt="工资管理"></p><p><img src="/2020/02/10/%E6%88%91%E7%9A%84%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/system.jpg" alt="系统管理"></p><h1 id="to-be-continue……"><a href="#to-be-continue……" class="headerlink" title="to be continue……"></a>to be continue……</h1>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> projects </tag>
+            
+        </tags>
       
     </entry>
     
@@ -114,38 +107,6 @@
             <tag> Markdown </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>spring + vue</title>
-      <link href="/2020/01/29/spring/"/>
-      <url>/2020/01/29/spring/</url>
-      
-        <content type="html"><![CDATA[<h2 id="springboot"><a href="#springboot" class="headerlink" title="springboot"></a>springboot</h2><p>Spring Boot是由Pivotal团队提供的全新框架，其设计目的是用来简化新Spring应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。通过这种方式，Spring Boot致力于在蓬勃发展的快速应用开发领域(rapid application development)成为领导者。</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> springboot </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2020/01/29/hello-world/"/>
-      <url>/2020/01/29/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
